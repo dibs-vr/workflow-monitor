@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  grafana:
+
+services:
+  grafana_db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: aem
+      MYSQL_USER: aemUser
+      MYSQL_PASSWORD: myPassword123
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker_data/mysql:/var/lib/mysql
+    networks:
+      grafana:
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./docker_data/grafana_data:/var/lib/grafana
+      - ./docker_data/certs:/certs
+    networks:
+      grafana:
