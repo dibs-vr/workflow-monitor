@@ -1,7 +1,9 @@
 package com.dibin.workflow.workflowmonitor;
 
+import com.dibin.workflow.workflowmonitor.service.WorkflowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -18,12 +20,15 @@ public class AemWorkflowMonitorApplication {
 		SpringApplication.run(AemWorkflowMonitorApplication.class, args);
 	}
 
-	@Scheduled(fixedRate = 5000)
+	@Autowired
+	private WorkflowService workflowService;
+
+	@Scheduled(fixedRate = 24 * 60 * 60 * 1000)
 	public void trigger() {
 		logger.debug("Start Time is now {}", new Date());
 
 		try {
-			System.out.println("doing something");
+			workflowService.retrieveAndSaveWorkflow();
 			logger.debug("Logger printing doing something");
 		} catch(Exception e) {
 			e.printStackTrace();

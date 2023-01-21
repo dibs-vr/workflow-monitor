@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="workflowDAO" class="com.dibin.workflow.workflowmonitor.dao.WorkflowDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="restService" class="com.dibin.workflow.workflowmonitor.rest.WorkflowRestService">
+
+    </bean>
+
+    <bean id="workflowService" class="com.dibin.workflow.workflowmonitor.service.WorkflowService">
+        <property name="workflowDAO" ref="workflowDAO"/>
+        <property name="restService" ref="restService"/>
+    </bean>
+
+</beans>
