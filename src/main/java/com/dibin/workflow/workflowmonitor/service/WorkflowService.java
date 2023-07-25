@@ -7,13 +7,16 @@ import com.dibin.workflow.workflowmonitor.model.WorkflowResult;
 import com.dibin.workflow.workflowmonitor.rest.WorkflowRestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WorkflowService {
 
+    @Autowired
     private WorkflowDao workflowDao;
 
+    @Autowired
     private WorkflowRestService restService;
 
     private Logger logger = LoggerFactory.getLogger(WorkflowService.class);
