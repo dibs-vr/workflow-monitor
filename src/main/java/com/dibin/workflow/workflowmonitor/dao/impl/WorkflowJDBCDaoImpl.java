@@ -4,6 +4,7 @@ import com.dibin.workflow.workflowmonitor.dao.WorkflowDao;
 import com.dibin.workflow.workflowmonitor.model.State;
 import com.dibin.workflow.workflowmonitor.model.Workflow;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Component
 public class WorkflowJDBCDaoImpl implements WorkflowDao {
 
     @Autowired

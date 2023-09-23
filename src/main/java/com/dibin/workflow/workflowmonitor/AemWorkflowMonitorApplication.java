@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 
 @SpringBootApplication
 @EnableScheduling
+@ImportResource("classpath:Spring-Module.xml")
 public class AemWorkflowMonitorApplication {
 
 	private Logger logger = LoggerFactory.getLogger(AemWorkflowMonitorApplication.class);
@@ -23,7 +25,8 @@ public class AemWorkflowMonitorApplication {
 	@Autowired
 	private WorkflowService workflowService;
 
-	@Scheduled(fixedRate = 24 * 60 * 60 * 1000)
+//	@Scheduled(fixedRate = 24 * 60 * 60 * 1000)
+	@Scheduled(fixedRate = 2 * 60 * 1000)
 	public void trigger() {
 		logger.debug("Start Time is now {}", new Date());
 

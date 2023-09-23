@@ -7,14 +7,16 @@ import com.dibin.workflow.workflowmonitor.model.WorkflowResult;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class WorkflowRestService {
 
     private Logger logger = LoggerFactory.getLogger(WorkflowRestService.class);
 
-    public WorkflowResult[] getorkflows(State state) throws Exception {
+    public WorkflowResult[] getWorkflows(State state) throws Exception {
         String url = getUrl(state);
         logger.debug("url = {}", url);
         String stateResponse = HttpUtility.sendGet(url);
